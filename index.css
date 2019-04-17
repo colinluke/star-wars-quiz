@@ -1,0 +1,272 @@
+body {
+  margin: 0; /* Tricky: override browser default */
+  font-family: "Roboto", sans-serif;
+  padding: 2.0rem;
+  overflow-x: hidden;
+
+  background-image: url(https://images.unsplash.com/photo-1502679726485-931beda67f88?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=de463bf685e4e3df80b0957fd4a2fa1c&auto=format&fit=crop&w=1955&q=80);
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-color: black; 
+  opacity: 1.0;
+}
+
+.move-out {
+  transform: translateX(calc(-200%));
+  opacity: 0.1;
+  transition: transform 0.75s ease-in, 
+              opacity 0.5s;
+}
+
+.move-in {
+  transition: transform 0.5s ease-out;
+}
+
+.off-right {
+  transform: translateX(calc(100% + 2.1rem));
+}
+
+.card {
+  opacity: 1.0;
+  border: 1px solid black;
+  border-radius: 15px;
+  background: white;
+  box-shadow: 0 0 0 6px gainsboro, 
+              0 0 0 12px black, 
+              0 0 0 18px gainsboro, 
+              3px 3px 3px 0 gray inset
+              ;
+  width: 90%;  
+  height: 100%;
+  margin: 2.5rem auto;
+  position: relative;
+  padding: 3rem 1.5rem 1.5rem 1.5rem;
+  max-width: 750px;
+}
+
+.card-heading {
+  font-family: STARWARS, 'Overpass Mono', monospace;
+  position: absolute;
+  top: -6rem;
+  /* -webkit-text-stroke: 1px gray; */
+  color: #9ab;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  line-height: 2.8rem;
+  text-shadow: 2px 2px 5px black;  
+  letter-spacing: 0.15rem;
+  /* transform: rotate(-30deg); */
+  text-indent: 1.0rem;
+  z-index: 300;
+}
+
+.card-content {
+  overflow: hidden;  
+  padding: 2rem 0 0 0;
+}
+
+.question-group {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media only screen and (min-width: 640px or orientation: landscape) {
+  .question-group > figure {
+    width: 50%;
+  }
+}
+
+.question-group > figure {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+}
+
+.question-group > figure > img {
+  max-width: 100%;
+}
+
+.question-group > form {
+  padding: 0;
+  display: inline-block; 
+  overflow: hidden; 
+  position: relative;
+}
+
+.question-group > form button {
+  width: 91%;
+  margin-left: 1rem;
+}
+
+.question-group > form div.message {
+  position: absolute;
+  top: 0;
+  left:0;
+  bottom: 0;
+  right: 0;
+  display: none;
+  background-color: rgba(256, 256, 256, 1.0);
+  font-size: 2rem;
+  text-transform: uppercase;
+  overflow: hidden;
+}
+
+.question-group > form div.message > div {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  margin: 50% 0;
+  font-family: STARWARS, Roboto, sans-serif;
+}
+
+.question-group > form div.message.correct {
+  color: green;
+}
+
+.question-group > form div.message.wrong {
+  left: -20px;
+  right: -20px;
+  color: red;
+}
+
+button {
+  text-transform: uppercase;
+  font-family: STARWARS, 'Overpass Mono', monospace;
+  border-radius: 10px;
+  border: none;
+  color: black;
+  background: white;
+  box-shadow: 0 0 0 3px black, 
+              0 0 0 6px white, 
+              0 0 0 9px black;
+  font-weight: bold;
+  outline: none;
+  -webkit-appearance: none;
+  padding: 10px;
+  margin: 10px 2.5px;
+  font-size: 1.0rem;  
+  letter-spacing: 0.20rem;
+}
+
+button:hover, button:focus {
+  background: darkslateblue;
+  color: white;
+}
+
+button:active {
+  background: red;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+ul > li {
+  padding: 5px;
+  font-size: 2.25rem;
+  margin: 5px;
+  border-width: 3px;
+  border-style: solid;
+  border-color: transparent; 
+  border-radius: 20px;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.radio-icon {
+  margin-right: 5px;
+  color: gainsboro;
+  display: inline-block;
+  transform: translateY(5px);
+}
+
+legend {
+  font-size: 1.6rem;
+}
+
+label:hover span.radio-icon {
+  color: #666;  
+}
+
+input[type=radio],
+input[type=checkbox] {
+  position: absolute;
+  top: auto;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE 6/7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  width: 1px;
+  height: 1px;
+  white-space: nowrap; /* https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe */
+}
+
+input[type=radio]:disabled + span.radio-icon {
+  color: gainsboro;
+}
+
+input[type=radio]:focus + span.radio-icon,
+input[type=checkbox]:focus + span.radio-icon{
+  color: scarlet;
+}
+
+input[type=radio]:active:not(:disabled) + span.radio-icon,
+input[type=checkbox]:active:not(:disabled) + span.radio-icon{
+  color: #333;
+}
+
+input[type=radio]:checked + span.radio-icon,
+input[type=checkbox]:checked + span.radio-icon{
+  color: red;
+}
+
+.wrong-icon, .wrong-answer{
+  color: #666 !important;
+}
+
+.correct-icon, .correct-answer {
+  color: black !important;
+}
+
+.correct-highlight {
+  border-color: green;
+}
+
+.wrong-highlight {
+  border-color:gainsboro;
+  border-style: dotted;
+}
+
+.disabled-answer {
+  color: lightgray;
+}
+
+.popup-background {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 10px;
+  z-index: 200;
+}
+
+.popup {
+  background-color: rgba(255, 255, 255, 1.0);
+  width: 50%;
+  top: 25%;
+  position: relative;
+  /* left: 25%; */
+  height: 33%;
+}
+
+.popup > p {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.popup > button {
+  position: absolute;
+  bottom: 10px;
+}
